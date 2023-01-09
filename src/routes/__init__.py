@@ -8,4 +8,7 @@ main_router = APIRouter(prefix="/ipr", tags=["IPR"])
 async def my_profile(ipr_in: IprCalcRequest):
     """Эндпоинт расчёта IPR"""
     from src.calculations.vogel_ipr import calc_ipr
-    pass
+
+    ipr = calc_ipr(ipr_in.p_res, ipr_in.pi, ipr_in.wct, ipr_in.pb)
+
+    return ipr
